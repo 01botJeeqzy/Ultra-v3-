@@ -4,320 +4,250 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  
-  <title>Ultra-51k Pro Coach</title>
+  <title>ULTRA-51K // NEURAL AI</title>
   <style>
     :root {
-      --bg: #000000;
-      --card: #111111;
-      --red: #e11d48;
-      --red-hover: #be123c;
-      --text: #ffffff;
-      --gray: #9ca3af;
-      --dark-gray: #1f2937;
-      --green: #22c55e;
-      --yellow: #eab308;
+      --bg: #030303;
+      --card-bg: #0a0a0a;
+      --card-border: #1f1f1f;
+      --red: #ff1e42;
+      --red-glow: rgba(255, 30, 66, 0.2);
+      --text: #f3f4f6;
+      --muted: #6b7280;
+      --green: #10b981;
+      --yellow: #f59e0b;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding-top: 65px;
-      padding-bottom: 20px;
+      padding-top: 70px;
+      padding-bottom: 30px;
     }
 
-    /* NAVBAR & MENU */
-    .navbar {
-      position: fixed; top: 0; width: 100%; height: 60px;
-      background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(5px);
-      border-bottom: 2px solid var(--red);
+    .topbar {
+      position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+      background: rgba(3, 3, 3, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 15px; box-sizing: border-box; z-index: 1000;
+      padding: 0 20px; z-index: 1000;
     }
 
-    .navbar h1 { color: var(--red); font-size: 1.2rem; margin: 0; font-weight: 900; letter-spacing: 1px; }
-    .menu-btn { background: none; border: none; color: var(--text); font-size: 1.8rem; cursor: pointer; }
+    .logo-area { display: flex; align-items: center; gap: 8px; }
+    .logo-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; box-shadow: 0 0 10px var(--red); }
+    .topbar h1 { font-size: 0.95rem; font-weight: 800; letter-spacing: 2px; color: var(--text); }
 
-    .menu {
+    .menu-trigger {
+      background: var(--card-border); border: 1px solid #333; color: var(--text);
+      width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem; cursor: pointer;
+    }
+
+    .hud-menu {
       display: none; position: fixed; top: 60px; left: 0; width: 100%;
-      background: #0a0a0a; flex-direction: column; z-index: 999;
-      border-bottom: 1px solid var(--dark-gray);
+      background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(20px);
+      flex-direction: column; z-index: 999; border-bottom: 1px solid var(--card-border);
+      padding: 10px 20px 20px 20px;
     }
-    .menu.active { display: flex; }
-    .menu button {
-      background: none; border: none; border-bottom: 1px solid #1a1a1a;
-      color: var(--text); padding: 15px 20px; text-align: left; font-size: 1rem; font-weight: bold;
-    }
-    .menu button:active { background: var(--red); }
+    .hud-menu.active { display: flex; }
 
-    /* LAYOUT & CARDS */
-    .content { padding: 10px; max-width: 600px; margin: 0 auto; }
-    .tab { display: none; animation: fadeIn 0.3s; }
-    .tab.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hud-menu button {
+      background: transparent; border: none; border-bottom: 1px solid #111;
+      color: var(--muted); padding: 15px 0; text-align: left; font-size: 0.95rem;
+      font-weight: 700; display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer;
+    }
+    .hud-menu button span { color: var(--text); }
+    .hud-menu button:hover { color: var(--red); }
+
+    .wrapper { padding: 15px; max-width: 500px; margin: 0 auto; }
+    .view { display: none; }
+    .view.active { display: block; }
 
     .card {
-      background: var(--card); border: 1px solid var(--dark-gray); border-radius: 12px;
-      padding: 15px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 20px; margin-bottom: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; overflow: hidden;
     }
-    
-    h2 { color: var(--red); margin: 0 0 10px 0; font-size: 1.1rem; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 5px; }
-    h3 { font-size: 0.95rem; margin: 10px 0 5px 0; color: #ddd; }
-    p { margin: 0 0 10px 0; font-size: 0.9rem; line-height: 1.4; color: #ccc; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--red); }
 
-    /* UTILS */
-    .btn {
-      background: var(--red); color: #fff; border: none; padding: 12px; width: 100%;
-      border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 5px;
+    .card-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 8px; }
+    .card-main-val { font-size: 2rem; font-weight: 900; letter-spacing: -1px; color: var(--text); }
+    p { font-size: 0.85rem; color: #9ca3af; line-height: 1.5; margin-top: 8px; }
+
+    .btn-main {
+      background: var(--text); color: var(--bg); border: none; padding: 14px;
+      width: 100%; border-radius: 12px; font-size: 0.9rem; font-weight: 800;
+      margin-top: 12px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
     }
-    .btn:active { background: var(--red-hover); }
-    
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
-    
-    .box { background: #000; border: 1px solid #333; padding: 10px; border-radius: 8px; text-align: center; }
-    .box-val { font-size: 1.2rem; font-weight: 900; color: var(--red); }
-    .box-lbl { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; margin-top: 3px; }
+    .btn-main:active { background: var(--red); color: #fff; }
 
-    /* PROGRESS BARS */
-    .bar-bg { background: #222; border-radius: 10px; height: 12px; width: 100%; margin-top: 5px; overflow: hidden; }
-    .bar-fill { background: var(--red); height: 100%; border-radius: 10px; }
-    .bar-fill.green { background: var(--green); }
-    .bar-fill.yellow { background: var(--yellow); }
-
-    /* CHAT IA */
-    .chat-box { background: #000; border-radius: 8px; padding: 10px; height: 150px; overflow-y: auto; border: 1px solid #333; margin-bottom: 10px; }
-    .msg { margin-bottom: 8px; font-size: 0.85rem; padding: 8px; border-radius: 8px; width: 85%; }
-    .msg.bot { background: #1a1a1a; color: var(--green); border-left: 2px solid var(--green); }
-    .msg.user { background: var(--dark-gray); color: #fff; margin-left: auto; text-align: right; }
-    .chat-input { display: flex; gap: 5px; }
-    .chat-input input { flex: 1; background: #000; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 8px; }
+    .metric-num { font-size: 1.25rem; font-weight: 800; color: var(--red); }
+    .chat-container { background: #000; border: 1px solid var(--card-border); border-radius: 12px; padding: 12px; height: 220px; overflow-y: auto; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; }
+    .bubble { padding: 10px 14px; border-radius: 10px; font-size: 0.8rem; max-width: 85%; line-height: 1.4; word-break: break-word; }
+    .bubble.ai { background: #121212; border-left: 2px solid var(--green); color: var(--text); }
+    .bubble.me { background: var(--red); color: #fff; align-self: flex-end; }
     
-    /* SPECIAL TEXT */
-    .highlight { color: var(--red); font-weight: bold; }
-    .tag { display: inline-block; background: #222; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; margin: 2px; }
+    .chat-row { display: flex; gap: 8px; }
+    .chat-row input { flex: 1; background: #000; border: 1px solid var(--card-border); color: #fff; padding: 12px; border-radius: 10px; font-size: 0.85rem; outline: none; }
+    input[type="range"] { width: 100%; accent-color: var(--red); margin-top: 8px; }
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <h1>ULTRA-51K PRO</h1>
-    <button class="menu-btn" id="btnMenu">☰</button>
-  </div>
+  <header class="topbar">
+    <div class="logo-area">
+      <div class="logo-dot"></div>
+      <h1>ULTRA-51K OS</h1>
+    </div>
+    <button class="menu-trigger" id="menuBtn">☰</button>
+  </header>
 
-  <div class="menu" id="dropdownMenu">
-    <button onclick="openTab('tab-dash')">🟢 Readiness & WOD</button>
-    <button onclick="openTab('tab-lab')">🧬 Lab de Rendimiento</button>
-    <button onclick="openTab('tab-sim')">⛰️ Simulador GPX</button>
-    <button onclick="openTab('tab-fuel')">🥤 Nutrición & Gear</button>
-    <button onclick="openTab('tab-coach')">🤖 Coach IA & Perfil</button>
-  </div>
+  <nav class="hud-menu" id="hudMenu">
+    <button onclick="switchView('v-dash')"><span>01 // Centro Neural & WOD</span> ↗</button>
+    <button onclick="switchView('v-lab')"><span>02 // Laboratorio & Memoria</span> ↗</button>
+    <button onclick="switchView('v-ai')"><span>03 // Coach Neural IA (Real)</span> ↗</button>
+  </nav>
 
-  <div class="content">
-    
-    <!-- DASHBOARD -->
-    <div id="tab-dash" class="tab active">
-      <div class="card" style="border-left: 4px solid var(--green);">
-        <h2>Estado de Hoy (Readiness)</h2>
-        <div style="font-size: 2.2rem; font-weight: 900; color: var(--green);">87<span style="font-size:1rem; color:var(--gray)">/100</span></div>
-        <p style="margin-top: 5px;"><strong>Buen día para cargar.</strong> Tu carga de los últimos 7 días está controlada. El balance carga/fatiga es óptimo.</p>
-        <div class="grid-3">
-          <div class="box"><div class="box-val">Normal</div><div class="box-lbl">Strain Semanal</div></div>
-          <div class="box"><div class="box-val">Baja</div><div class="box-lbl">Monotonía</div></div>
-          <div class="box"><div class="box-val">12h</div><div class="box-lbl">Recuperación</div></div>
-        </div>
+  <main class="wrapper">
+    <!-- VISTA 1: DASHBOARD -->
+    <div id="v-dash" class="view active">
+      <div class="card" style="border-left-color: var(--green);">
+        <div class="card-title">Readiness Index (Memoria Activa)</div>
+        <div class="card-main-val" id="readinessVal" style="color: var(--green);">87 / 100</div>
+        <p id="readinessDesc">Calculado según tus últimos registros de fatiga almacenados.</p>
       </div>
 
       <div class="card">
-        <h2>WOD: Entrenamiento</h2>
-        <p><strong style="font-size:1.1rem; color:#fff;">Tirada Z2 + Desnivel</strong></p>
-        <p>14 km en terreno rompepiernas. Mantén el pulso bajo 150 ppm.</p>
-        <button class="btn">Registrar como completado</button>
-      </div>
-
-      <div class="card">
-        <h2>Fatigue Monitor (Post-Entreno)</h2>
-        <p>Registra tus sensaciones para alimentar la IA.</p>
-        <div style="display:flex; justify-content:space-between; margin-top:10px;">
-          <span style="font-size:0.8rem;">Piernas:</span>
-          <input type="range" min="1" max="10" value="4" style="width:70%; accent-color:var(--red);">
-        </div>
-        <div style="display:flex; justify-content:space-between; margin-top:10px;">
-          <span style="font-size:0.8rem;">Fatiga General:</span>
-          <input type="range" min="1" max="10" value="3" style="width:70%; accent-color:var(--red);">
-        </div>
-        <div style="background:#1a1a1a; padding:10px; border-radius:6px; margin-top:10px; font-size:0.8rem; border-left: 2px solid var(--yellow);">
-          ⚠️ <strong>Patrón detectado:</strong> Los días posteriores a tiradas >28 km tu fatiga muscular aumenta un 35%.
-        </div>
+        <div class="card-title">Monitor de Fatiga Diaria</div>
+        <p>¿Cómo sientes las piernas hoy? (1 al 10):</p>
+        <input type="range" id="fatigueRange" min="1" max="10" value="3">
+        <button class="btn-main" onclick="guardarFatiga()">Guardar Registro Local</button>
       </div>
     </div>
 
-    <!-- PERFORMANCE LAB -->
-    <div id="tab-lab" class="tab">
-      <div class="card">
-        <h2>Motor de Durabilidad</h2>
-        <div style="font-size: 2rem; font-weight: 900; color: var(--yellow);">72<span style="font-size:1rem; color:var(--gray)">/100</span></div>
-        <div class="bar-bg"><div class="bar-fill yellow" style="width: 72%;"></div></div>
-        <p style="margin-top:10px;">Mantienes bien el ritmo hasta el km 28, pero falta demostrar estabilidad estructural y de pulso a partir del km 30.</p>
-      </div>
-
-      <div class="card">
-        <h2>Cardiac Drift (Deriva)</h2>
-        <p>Evolución de pulsaciones manteniendo ritmo estable (5:30/km):</p>
-        <div style="font-family: monospace; font-size:0.85rem; background:#000; padding:10px; border-radius:6px;">
-          KM 00 &nbsp;|| <span style="color:var(--green)">145 ppm</span><br>
-          KM 10 &nbsp;|||| <span style="color:var(--green)">148 ppm</span><br>
-          KM 20 &nbsp;|||||| <span style="color:var(--yellow)">153 ppm</span><br>
-          KM 30 &nbsp;||||||||| <span style="color:var(--red)">160 ppm</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Mountain Intelligence</h2>
-        <div class="grid-2">
-          <div class="box"><div class="box-val" style="color:#fff;">8:15<span style="font-size:0.7rem">/km</span></div><div class="box-lbl">⛰️ Subida (164 ppm)</div></div>
-          <div class="box"><div class="box-val" style="color:#fff;">5:18<span style="font-size:0.7rem">/km</span></div><div class="box-lbl">🏃 Llano (148 ppm)</div></div>
-          <div class="box"><div class="box-val" style="color:#fff;">4:52<span style="font-size:0.7rem">/km</span></div><div class="box-lbl">📉 Bajada (151 ppm)</div></div>
-          <div class="box"><div class="box-val" style="color:var(--green);">+12%</div><div class="box-lbl">Eficiencia Bajando</div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>¿Qué pasaría si...? (Simulador)</h2>
-        <p>Impacto estimado en tu cuerpo:</p>
-        <button class="btn" style="background:#222; font-size:0.85rem; margin-bottom:5px;">👉 Hacer 75 km/semana durante 8 semanas</button>
-        <button class="btn" style="background:#222; font-size:0.85rem;">👉 30 km el Sábado + 20 km el Domingo</button>
+    <!-- VISTA 2: LABORATORIO -->
+    <div id="v-lab" class="view">
+      <div class="card" style="border-left-color: var(--yellow);">
+        <div class="card-title">Historial de Registros</div>
+        <div class="metric-num" id="totalEntrenos">0 Registrados</div>
+        <p>Tus datos se quedan guardados en la memoria del dispositivo.</p>
+        <button class="btn-main" style="background:#222; color:#fff;" onclick="limpiarMemoria()">Borrar Memoria Local</button>
       </div>
     </div>
 
-    <!-- SIMULADOR GPX -->
-    <div id="tab-sim" class="tab">
-      <div class="card" style="text-align: center; border-color: var(--red);">
-        <h2 style="border:none;">🏆 ROAD TO 51K</h2>
-        <div style="font-size: 2.5rem; font-weight: 900; color: #fff;">206 <span style="font-size: 1rem; color:var(--gray)">DÍAS</span></div>
-        <p style="color: var(--red); font-weight: bold; margin-bottom:0;">27 MARZO 2027</p>
-        <div style="margin-top:10px; font-size:0.7rem; color:var(--gray);">
-          <span class="tag" style="background:var(--red); color:#fff;">BASE</span> > 
-          <span class="tag">CONSTRUCCIÓN</span> > 
-          <span class="tag">ESPECÍFICO</span> > 
-          <span class="tag">TAPER</span>
-        </div>
-      </div>
-
+    <!-- VISTA 3: COACH IA REAL -->
+    <div id="v-ai" class="view">
       <div class="card">
-        <h2>Race Simulator: Los 102 de la Comarca</h2>
-        <p>Sube tu track GPX para predecir tiempos y puntos clave de la ruta.</p>
-        <button class="btn">Cargar GPX</button>
-        
-        <h3 style="margin-top:15px; color:var(--red);">Predicción de Tiempo (51K)</h3>
-        <p>Basado en tu volumen y entrenamientos actuales:</p>
-        <div class="grid-2">
-          <div class="box"><div class="box-val" style="color:#fff;">5:08:00</div><div class="box-lbl">Tiempo Actual</div></div>
-          <div class="box"><div class="box-val" style="color:var(--green);">4:59:59</div><div class="box-lbl">Tiempo Objetivo</div></div>
+        <div class="card-title">Neural Coach 51K (API OpenAI)</div>
+        <div class="chat-container" id="chatBox">
+          <div class="bubble ai">Hola Daniel. Conecto directamente con el modelo de IA y tu memoria local. Pregúntame lo que necesites.</div>
         </div>
-        <div class="bar-bg"><div class="bar-fill" style="width: 82%;"></div></div>
-        <p style="text-align:right; font-size:0.75rem; margin-top:5px;">82% de probabilidad de éxito</p>
-      </div>
-    </div>
-
-    <!-- NUTRICIÓN & GEAR -->
-    <div id="tab-fuel" class="tab">
-      <div class="card">
-        <h2>Race Fuel Lab</h2>
-        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-          <span>Tiempo Objetivo:</span> <strong>5h 00m</strong>
-        </div>
-        <div class="grid-2">
-          <div class="box"><div class="box-val">70g</div><div class="box-lbl">CH / hora objetivo</div></div>
-          <div class="box"><div class="box-val">500ml</div><div class="box-lbl">Líquido / hora</div></div>
-        </div>
-        <div style="background:#1a1a1a; padding:10px; border-radius:6px; margin-top:10px;">
-          <h3 style="margin-top:0; color:var(--green);">Totales para la Carrera</h3>
-          <ul style="margin:0; padding-left:20px; font-size:0.85rem; color:#ccc;">
-            <li>350g de Carbohidratos totales</li>
-            <li>2.5 Litros de líquido (5 soft flasks)</li>
-            <li>Beber cada 15 min, gel cada 45 min.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Metrónomo de Cadencia</h2>
-        <div style="font-size: 2.5rem; text-align: center; font-weight: 900; color: var(--red);">170 <span style="font-size:0.9rem; color:#fff;">PPM</span></div>
-        <button class="btn">Activar Sonido / Vibración</button>
-      </div>
-      
-      <div class="card">
-        <h2>Gear Tracker (Zapatillas)</h2>
-        <div class="bar-bg"><div class="bar-fill" style="width: 68%;"></div></div>
-        <p style="margin-top:5px; font-size:0.8rem;">Hoka Speedgoat 5 — 340 km recorridos (68%)</p>
-      </div>
-    </div>
-
-    <!-- COACH IA & PERFIL -->
-    <div id="tab-coach" class="tab">
-      <div class="card">
-        <h2>Athlete Card (Daniel)</h2>
-        <div class="grid-3" style="margin-bottom:10px;">
-          <div class="box" style="padding:5px;"><div class="box-val" style="font-size:1rem; color:#fff;">16:35</div><div class="box-lbl">5K</div></div>
-          <div class="box" style="padding:5px;"><div class="box-val" style="font-size:1rem; color:#fff;">35:59</div><div class="box-lbl">10K</div></div>
-          <div class="box" style="padding:5px;"><div class="box-val" style="font-size:1rem; color:#fff;">63</div><div class="box-lbl">VO2Max</div></div>
-        </div>
-        <p style="font-size:0.8rem; margin-bottom:5px;">Métricas adaptativas:</p>
-        <span class="tag">Aeróbico: 91</span> <span class="tag">Velocidad: 94</span> 
-        <span class="tag">Montaña: 78</span> <span class="tag">Durabilidad: 68</span>
-      </div>
-
-      <div class="card">
-        <h2>Laboratorio del Atleta</h2>
-        <ul style="margin:0; padding-left:20px; font-size:0.85rem; color:#ccc; line-height:1.6;">
-          <li>❤️ Tu FC suele mantenerse estable hasta ~90 min.</li>
-          <li>⛰️ En desnivel tu FC aumenta 16 ppm respecto a llano.</li>
-          <li>🦵 Limitante actual: durabilidad muscular post 30km.</li>
-          <li>📈 Tu volumen aumentó 12% en las últimas 4 semanas.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Coach IA 51K</h2>
-        <div class="chat-box">
-          <div class="msg bot">¡Hola Daniel! Tu volumen está perfecto esta semana. ¿Qué analizamos hoy?</div>
-          <div class="msg user">¿Por qué se me disparó el pulso ayer?</div>
-          <div class="msg bot">Cruzando datos: ayer hiciste desnivel técnico a 24°C y tu deriva cardíaca subió un 8% tras el km 12. Faltó hidratación.</div>
-        </div>
-        <div class="chat-input">
-          <input type="text" placeholder="¿Estoy preparado para 30km?">
-          <button class="btn" style="width:auto; margin-top:0; padding:10px 15px;">Enviar</button>
+        <div class="chat-row">
+          <input type="text" id="userInput" placeholder="Ej: ¿Estoy listo para 30km?" onkeypress="if(event.key === 'Enter') enviarMensaje()">
+          <button class="btn-main" style="width: auto; margin-top:0; padding: 0 16px;" onclick="enviarMensaje()">→</button>
         </div>
       </div>
     </div>
-
-  </div>
+  </main>
 
   <script>
-    // 1. FORZAR ACTUALIZACIÓN (MATA CACHÉ ANTIGUA)
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for(let registration of registrations) { registration.unregister(); }
-      });
+    if (!localStorage.getItem('ultras_logs')) {
+      localStorage.setItem('ultras_logs', JSON.stringify([]));
     }
 
-    // 2. LÓGICA DEL MENÚ HAMBURGUESA
-    const btnMenu = document.getElementById('btnMenu');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    
-    btnMenu.addEventListener('click', () => { dropdownMenu.classList.toggle('active'); });
-
-    function openTab(tabId) {
-      document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      dropdownMenu.classList.remove('active');
+    function switchView(viewId) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+      hudMenu.classList.remove('active');
       window.scrollTo(0,0);
+      actualizarEstadisticas();
     }
+
+    const menuBtn = document.getElementById('menuBtn');
+    const hudMenu = document.getElementById('hudMenu');
+    menuBtn.addEventListener('click', () => hudMenu.classList.toggle('active'));
+
+    function guardarFatiga() {
+      let nivel = document.getElementById('fatigueRange').value;
+      let logs = JSON.parse(localStorage.getItem('ultras_logs'));
+      logs.push({ fecha: new Date().toLocaleDateString(), fatiga: nivel });
+      localStorage.setItem('ultras_logs', JSON.stringify(logs));
+
+      let readScore = Math.max(20, 100 - (nivel * 8));
+      localStorage.setItem('ultras_readiness', readScore);
+      alert('¡Guardado correctamente!');
+      actualizarEstadisticas();
+    }
+
+    function limpiarMemoria() {
+      localStorage.clear();
+      localStorage.setItem('ultras_logs', JSON.stringify([]));
+      alert('Memoria borrada.');
+      actualizarEstadisticas();
+    }
+
+    function actualizarEstadisticas() {
+      let logs = JSON.parse(localStorage.getItem('ultras_logs')) || [];
+      document.getElementById('totalEntrenos').innerText = logs.length + " Registros en base local";
+      let savedReadiness = localStorage.getItem('ultras_readiness');
+      if (savedReadiness) {
+        document.getElementById('readinessVal').innerText = savedReadiness + " / 100";
+      }
+    }
+
+    async function enviarMensaje() {
+      let input = document.getElementById('userInput');
+      let chatBox = document.getElementById('chatBox');
+      let text = input.value.trim();
+      if(!text) return;
+
+      chatBox.innerHTML += `<div class="bubble me">${text}</div>`;
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      let logs = JSON.parse(localStorage.getItem('ultras_logs')) || [];
+      let readiness = localStorage.getItem('ultras_readiness') || 'No calculado';
+
+      let promptSistema = `Eres un coach experto en ultra trail running preparando los 51K. 
+      Contexto actual del atleta guardado en su dispositivo:
+      - Readiness actual: ${readiness}/100
+      - Historial de fatiga reciente: ${JSON.stringify(logs)}
+      Responde de forma técnica, motivadora y directa a la consulta: ${text}`;
+
+      let idTemp = 'loading_' + Date.now();
+      chatBox.innerHTML += `<div class="bubble ai" id="${idTemp}">Pensando...</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      try {
+        let response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer TU_API_KEY_AQUI' 
+          },
+          body: JSON.stringify({
+            model: "gpt-4o-mini",
+            messages: [{ role: "user", content: promptSistema }],
+            temperature: 0.7
+          })
+        });
+
+        let data = await response.json();
+        let respuestaIA = data.choices[0].message.content;
+
+        document.getElementById(idTemp).remove();
+        chatBox.innerHTML += `<div class="bubble ai">${respuestaIA}</div>`;
+      } catch (error) {
+        document.getElementById(idTemp).remove();
+        chatBox.innerHTML += `<div class="bubble ai">Error de conexión con la IA. Comprueba tu clave de API en el código.</div>`;
+      }
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    actualizarEstadisticas();
   </script>
 </body>
 </html>
