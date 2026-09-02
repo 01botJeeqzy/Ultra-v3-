@@ -1,24 +1,323 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#050505"><link rel="manifest" href="manifest.webmanifest"><title>Ultra Coach 51K PRO V3</title><style>
-:root{--b:#050505;--p:#111;--p2:#181818;--l:#303030;--t:#f5f5f5;--m:#999;--r:#e10600;--r2:#ff2922;--g:#3ddd91}*{box-sizing:border-box}body{margin:0;background:var(--b);color:var(--t);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:25px}.app{max-width:1050px;margin:auto;padding:calc(12px + env(safe-area-inset-top)) 14px 35px}.top{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:20;padding:8px 0;background:linear-gradient(var(--b) 75%,transparent)}.menu{width:46px;height:46px;border:1px solid var(--l);background:var(--p);color:white;border-radius:13px;font-size:25px}.brand{font-size:9px;letter-spacing:2px;color:var(--r2);font-weight:900}.top h1{margin:2px 0;font-size:22px}.view{display:none}.view.active{display:block}.drawer{position:fixed;inset:0;z-index:100;visibility:hidden}.drawer.open{visibility:visible}.shade{position:absolute;inset:0;background:#000c;opacity:0;transition:.2s}.drawer.open .shade{opacity:1}.side{position:absolute;top:0;bottom:0;left:0;width:min(330px,88vw);background:#090909;border-right:1px solid #333;padding:calc(20px + env(safe-area-inset-top)) 14px;transform:translateX(-100%);transition:.22s;overflow:auto}.drawer.open .side{transform:none}.sidehead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.close{border:0;background:none;color:#aaa;font-size:26px}.mi{display:flex;gap:12px;align-items:center;width:100%;border:1px solid transparent;background:none;color:#ddd;padding:12px;border-radius:12px;text-align:left;margin:3px 0}.mi.active,.mi:hover{background:#181818;border-color:#333;color:#fff}.sec{font-size:9px;letter-spacing:2px;color:#666;font-weight:900;margin:18px 7px 6px}.hero,.card,.metric,.row,.tool{background:var(--p);border:1px solid var(--l);border-radius:17px;padding:15px;margin:10px 0}.hero{background:linear-gradient(135deg,#220000,#101010 65%);border-color:#4b1717}.ey{font-size:10px;letter-spacing:2px;color:var(--r2);font-weight:900}.hero h2{font-size:27px;margin:6px 0}.muted{color:var(--m)}.small{font-size:11px}.grid{display:grid;gap:10px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.metric small,.tag{display:block;color:var(--m);font-size:10px}.metric b{font-size:22px}.red{color:var(--r2)}.btn{border:1px solid var(--l);background:var(--p2);color:#fff;border-radius:11px;padding:10px 14px;font-weight:900}.btn.redbtn{background:var(--r);border-color:var(--r)}.form{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}label{font-size:11px;color:var(--m)}input,select,textarea{width:100%;margin-top:5px;background:#181818;color:#fff;border:1px solid var(--l);border-radius:10px;padding:10px;outline:none}.progress{height:9px;background:#292929;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--r);width:0}.plan{display:grid;grid-template-columns:75px 1fr auto;gap:12px;align-items:center}.zone{display:grid;grid-template-columns:50px 115px 1fr;gap:10px;align-items:center}.band{height:8px;background:#292929;border-radius:99px;overflow:hidden}.band i{display:block;height:100%;background:var(--r)}.session{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.session div{background:#181818;border-radius:12px;padding:10px}.chart{height:150px;display:flex;align-items:end;gap:5px;background:#111;padding:12px;border-radius:13px}.bar{flex:1;background:var(--r);border-radius:4px 4px 1px 1px}.chat{height:320px;overflow:auto;display:flex;flex-direction:column;gap:8px}.bubble{padding:11px 13px;border-radius:14px;max-width:90%}.ai{background:#191919}.me{background:#610805;align-self:flex-end}.chatbar{display:grid;grid-template-columns:1fr 100px;gap:8px}.toolGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tool{margin:0}.timer{text-align:center;font-size:52px;font-weight:950;color:var(--r2);font-variant-numeric:tabular-nums;margin:15px}.notice{background:#1d0a09;border:1px solid #57201d;color:#e7b0ac;border-radius:14px;padding:13px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:7px;border-bottom:1px solid var(--l);text-align:left}th{font-size:10px;color:var(--m)}
-@media(max-width:760px){.g4,.g3{grid-template-columns:repeat(2,1fr)}.form{grid-template-columns:repeat(2,1fr)}.toolGrid{grid-template-columns:1fr}.plan{grid-template-columns:55px 1fr}.plan span{grid-column:2}}@media(max-width:480px){.g4,.g3,.g2,.form{grid-template-columns:1fr}.session{grid-template-columns:1fr}.hero h2{font-size:24px}}
-</style></head><body>
-<div class="drawer" id="drawer"><div class="shade" onclick="closeMenu()"></div><aside class="side"><div class="sidehead"><div><div class="brand">ULTRA COACH</div><b>51K PRO V3</b></div><button class="close" onclick="closeMenu()">×</button></div>
-<div class="sec">ENTRENAMIENTO</div><button class="mi active" data-v="dashboard" onclick="go('dashboard')">⌂ &nbsp; Dashboard</button><button class="mi" data-v="plan" onclick="go('plan')">▣ &nbsp; Plan maestro</button><button class="mi" data-v="log" onclick="go('log')">＋ &nbsp; Registrar sesión</button><button class="mi" data-v="analysis" onclick="go('analysis')">◒ &nbsp; Datos y carga</button><button class="mi" data-v="zones" onclick="go('zones')">♥ &nbsp; Zonas FC</button>
-<div class="sec">HERRAMIENTAS DIARIAS</div><button class="mi" data-v="daily" onclick="go('daily')">⏱ &nbsp; Cronómetro y utilidades</button><button class="mi" data-v="race" onclick="go('race')">⚑ &nbsp; Race Lab 51K</button><button class="mi" data-v="nutrition" onclick="go('nutrition')">● &nbsp; Nutrición</button><button class="mi" data-v="routes" onclick="go('routes')">⌖ &nbsp; GPX / Rutas</button><button class="mi" data-v="coach" onclick="go('coach')">AI &nbsp; Coach IA</button>
-<div class="sec">ATLETA</div><button class="mi" data-v="profile" onclick="go('profile')">◉ &nbsp; Perfil</button><button class="mi" onclick="backup()">↓ &nbsp; Exportar backup</button></aside></div>
-<div class="app"><header class="top"><button class="menu" onclick="openMenu()">☰</button><div><div class="brand">LOS 102 · 27/03/2027</div><h1>Ultra Coach 51K</h1></div></header>
-<section id="dashboard" class="view active"><div class="hero"><div class="ey">SESIÓN RECOMENDADA</div><h2 id="today">12 km · Rodaje llano Z2</h2><p class="muted" id="todayText">140–150 ppm · RPE 3–4 · base aeróbica.</p><button class="btn redbtn" onclick="go('log')">Registrar entrenamiento</button></div><div class="grid g4"><div class="metric"><small>SEMANA</small><b id="wkKm">0 km</b></div><div class="metric"><small>TIEMPO</small><b id="wkH">0:00</b></div><div class="metric"><small>DESNIVEL</small><b id="wkE">0 m</b></div><div class="metric"><small>READINESS</small><b id="readiness" class="red">82</b></div></div><div class="grid g2"><div class="card"><h3>Volumen</h3><div class="progress"><i id="bar"></i></div><p id="vol" class="small muted">0 / 75 km</p></div><div class="card"><h3>Estado</h3><div class="session"><div><span class="tag">FATIGA</span><b id="fat">—</b></div><div><span class="tag">DOLOR</span><b id="pain">—</b></div><div><span class="tag">CARGA</span><b id="load">0</b></div></div></div></div><div class="card"><h3>51K objetivo</h3><p class="muted">GPX analizado: ~50,78 km y ~417 m+. Recorrido corrible con desnivel especialmente relevante en el tramo final. El gran objetivo es llegar al km 40 con musculatura suficiente para seguir corriendo.</p></div></section>
-<section id="plan" class="view"><h2>Plan maestro</h2><p class="muted">Máximo de tirada individual: 32 km.</p><div id="planList"></div></section>
-<section id="zones" class="view"><h2>Zonas FC</h2><div class="card"><div class="grid g4"><div class="metric"><small>FCmáx</small><b>210</b></div><div class="metric"><small>Reposo</small><b>43</b></div><div class="metric"><small>Reserva</small><b>167</b></div><div class="metric"><small>Umbral</small><b>189</b></div></div></div><div id="zonesList"></div></section>
-<section id="log" class="view"><h2>Registrar sesión</h2><form class="card form" onsubmit="saveWorkout(event)"><label>Fecha<input id="date" type="date" required></label><label>Km<input id="km" type="number" step=".1" required></label><label>Minutos<input id="minutes" type="number" required></label><label>Desnivel +<input id="elev" type="number" value="0"></label><label>FC media<input id="avg" type="number"></label><label>FC máxima<input id="max" type="number"></label><label>RPE 1–10<input id="rpe" type="number" min="1" max="10" value="4"></label><label>Fatiga 1–10<input id="fatigue" type="number" min="1" max="10" value="3"></label><label>Dolor 0–10<input id="painIn" type="number" min="0" max="10" value="0"></label><label>Calambres 0–10<input id="cramps" type="number" min="0" max="10" value="0"></label><label>CH g/h<input id="carbs" type="number"></label><label>Agua L/h<input id="water" type="number" step=".1"></label><label>Tipo<select id="kind"><option>Rodaje Z1</option><option>Rodaje Z2</option><option>Montaña</option><option>Tirada larga</option><option>Back-to-back</option><option>Calidad</option><option>Recuperación</option></select></label><button class="btn redbtn" style="grid-column:1/-1">Guardar sesión</button></form><div class="card"><h3>Historial</h3><div id="history"></div></div></section>
-<section id="analysis" class="view"><h2>Datos y carga</h2><div class="grid g4"><div class="metric"><small>SESIONES</small><b id="n">0</b></div><div class="metric"><small>MAYOR TIRADA</small><b id="long">0 km</b></div><div class="metric"><small>RPE MEDIO</small><b id="rpeAvg">—</b></div><div class="metric"><small>CH MEDIO</small><b id="chAvg">—</b></div></div><div class="card"><h3>Volumen · 12 semanas</h3><div id="chart" class="chart"></div></div><div class="grid g2"><div class="card"><h3>Análisis</h3><p id="analysisText" class="muted">Registra sesiones para activar tendencias.</p></div><div class="card"><h3>Durabilidad</h3><p id="dur" class="muted">Se analizarán las tiradas largas.</p></div></div></section>
-<section id="daily" class="view"><h2>Herramientas diarias</h2><div class="toolGrid"><div class="tool"><b>⏱ Cronómetro</b><div class="timer" id="timer">00:00</div><button class="btn redbtn" onclick="timerStart()">Iniciar</button> <button class="btn" onclick="timerStop()">Parar</button> <button class="btn" onclick="timerReset()">Reset</button></div><div class="tool"><b>❤️ Comprobar FC</b><input id="hrCheck" type="number" placeholder="FC actual"><button class="btn redbtn" onclick="checkHR()">Comprobar zona</button><p id="hrOut" class="muted"></p></div><div class="tool"><b>💧 Hidratación</b><input id="waterQuick" type="number" step=".1" placeholder="Litros"><input id="hoursQuick" type="number" step=".1" placeholder="Horas"><button class="btn redbtn" onclick="waterRate()">L/h</button><p id="waterOut" class="muted"></p></div><div class="tool"><b>⚡ Carbohidratos</b><input id="chRate" type="number" value="60"><input id="chHours" type="number" step=".1" placeholder="Horas"><button class="btn redbtn" onclick="chTotal()">Total CH</button><p id="chOut" class="muted"></p></div><div class="tool"><b>🏃 Ritmo</b><input id="paceKm" type="number" step=".1" placeholder="Km"><input id="paceMin" type="number" step=".1" placeholder="Minutos"><button class="btn redbtn" onclick="calcPace()">Calcular</button><p id="paceOut" class="muted"></p></div><div class="tool"><b>🧠 Check-in</b><input id="sleep" type="number" min="1" max="10" placeholder="Sueño 1–10"><input id="legs" type="number" min="1" max="10" placeholder="Piernas 1–10"><button class="btn redbtn" onclick="checkIn()">Evaluar</button><p id="checkOut" class="muted"></p></div></div></section>
-<section id="race" class="view"><h2>Race Lab 51K</h2><div class="grid g3"><div class="card"><span class="tag">OBJETIVO</span><h3>4:59:59</h3><p class="muted">5:53/km matemático</p></div><div class="card"><span class="tag">ANTERIOR</span><h3>5:35:33</h3><p class="muted">154 ppm media · 179 máx</p></div><div class="card"><span class="tag">CLAVE</span><h3>KM 40+</h3><p class="muted">Durabilidad muscular</p></div></div><div class="card"><div class="row"><b>0–10 km</b><p class="muted">Control absoluto.</p></div><div class="row"><b>10–30 km</b><p class="muted">Ritmo económico + alimentación constante.</p></div><div class="row"><b>30–40 km</b><p class="muted">Proteger musculatura.</p></div><div class="row"><b>40–51 km</b><p class="muted">Tramo decisivo: seguir corriendo en el desnivel final.</p></div></div></section>
-<section id="nutrition" class="view"><h2>Nutrición</h2><div class="grid g3"><div class="metric"><small>INICIO</small><b>50–60 g/h</b></div><div class="metric"><small>DESARROLLO</small><b>60–70 g/h</b></div><div class="metric"><small>OBJETIVO A ENTRENAR</small><b>60–80 g/h</b></div></div><div class="notice">Practica la tolerancia progresivamente en las tiradas largas. Registra CH, líquido y molestias.</div></section>
-<section id="routes" class="view"><h2>GPX / Rutas</h2><div class="notice">Los GPX importados se almacenan localmente en este dispositivo.</div><div class="card"><input id="gpxFile" type="file" accept=".gpx"><p id="gpxMsg" class="muted small">Procesamiento local.</p><div id="gpxList"></div></div></section>
-<section id="coach" class="view"><h2>Coach IA</h2><div class="chat" id="chat"><div class="bubble ai"><b>Coach:</b><br>Motor local activo. Puedo orientarte con las sesiones que registres.</div></div><form class="chatbar" onsubmit="ask(event)"><input id="question" placeholder="¿Qué hago hoy?"><button class="btn redbtn">Enviar</button></form><div class="notice small">Es un motor local simulado; una IA real requiere backend seguro.</div></section>
-<section id="profile" class="view"><h2>Perfil</h2><div class="grid g4"><div class="metric"><small>EDAD</small><b>18</b></div><div class="metric"><small>PESO</small><b>62 kg</b></div><div class="metric"><small>VO₂max</small><b>63</b></div><div class="metric"><small>UMBRAL</small><b>189 · 4:01/km</b></div></div><div class="card"><p class="muted">COROS Pace 3 · FCmáx 210 · reposo 43 · 5K 16:35 · 10K 35:59 · 5–6 días/semana · ~600 m+/semana.</p><p class="muted">Rodajes habituales: 5:15–5:30/km y 145–155 ppm. Tirada máxima: 32 km. Bici y bastones disponibles.</p></div></section>
-</div>
-<script>
-const K="uc51v3";let D=JSON.parse(localStorage.getItem(K)||'{"workouts":[],"gpx":[]}');const Z=[["Z1","127–143","Recuperación",25],["Z2","143–160","Aeróbico",45],["Z3","160–177","Moderado",65],["Z4","177–193","Umbral",85],["Z5","193–210","Alta intensidad",100]],P=[["SEP","60–75 km","BASE","Rodajes aeróbicos + continuidad"],["OCT","65–80 km","CONSTRUCCIÓN","Subida progresiva de volumen"],["NOV","70–85 km","RESISTENCIA","Tiradas 24–28 km"],["DIC","60–78 km","DESCARGA","Bajar fatiga"],["ENE","75–90 km","ESPECÍFICO","30–32 km + doble fin de semana"],["FEB","75–90 km","PICO","Durabilidad + nutrición"],["MAR 1–14","65–80 km","AFINAMIENTO","Mantener estímulo"],["MAR 15–21","45–60 km","TAPER","Bajar volumen"],["MAR 22–27","20–30 km","CARRERA","27/03 · 51 KM"]];function save(){localStorage.setItem(K,JSON.stringify(D))}function openMenu(){drawer.classList.add("open")}function closeMenu(){drawer.classList.remove("open")}function go(id){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".mi[data-v]").forEach(x=>x.classList.toggle("active",x.dataset.v===id));closeMenu();scrollTo(0,0)}function ws(){let d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d}function calc(){let s=ws(),km=0,mi=0,el=0,ld=0;D.workouts.forEach(w=>{let d=new Date(w.date);if(d>=s){km+=+w.km||0;mi+=+w.min||0;el+=+w.elev||0}if(d>=new Date(Date.now()-6048e5))ld+=(+w.km||0)*(+w.rpe||4)});let a=D.workouts.slice(-7),f=a.length?a.reduce((x,w)=>x+(+w.fatigue||3),0)/a.length:3,pa=a.length?a.reduce((x,w)=>x+(+w.pain||0),0)/a.length:0,rd=Math.round(Math.max(25,Math.min(96,88-(f-3)*7-pa*4)));wkKm.textContent=km.toFixed(1)+" km";wkH.textContent=Math.floor(mi/60)+":"+String(mi%60).padStart(2,"0");wkE.textContent=Math.round(el)+" m";load.textContent=Math.round(ld);readiness.textContent=rd;bar.style.width=Math.min(100,km/75*100)+"%";vol.textContent=km.toFixed(1)+" / 75 km";fat.textContent=a.length?f.toFixed(1):"—";pain.textContent=a.length?pa.toFixed(1):"—";today.textContent=rd<50?"Recuperación · 6–8 km":rd<70?"Rodaje fácil · 8–10 km":"12 km · Rodaje llano Z2";todayText.textContent=rd<50?"Prioridad: recuperar.":rd<70?"135–145 ppm · sin perseguir ritmo.":"140–150 ppm · RPE 3–4 · base aeróbica."}function render(){calc();planList.innerHTML=P.map(p=>`<div class="row plan"><b>${p[0]}</b><div><b>${p[1]}</b><div class="muted">${p[2]}</div></div><span class="small muted">${p[3]}</span></div>`).join("");zonesList.innerHTML=Z.map(z=>`<div class="row zone"><b>${z[0]}</b><b>${z[1]} ppm</b><div><b>${z[2]}</b><div class="band"><i style="width:${z[3]}%"></i></div></div></div>`).join("");if(!D.workouts.length)history.innerHTML='<div class="muted">Sin sesiones.</div>';else history.innerHTML='<table><tr><th>Fecha</th><th>Km</th><th>Min</th><th>FC</th><th>RPE</th><th>+m</th></tr>'+D.workouts.slice().reverse().map(w=>`<tr><td>${new Date(w.date).toLocaleDateString("es-ES")}</td><td>${w.km}</td><td>${w.min}</td><td>${w.avg||"—"}</td><td>${w.rpe}</td><td>${w.elev||0}</td></tr>`).join("")+'</table>';let ws=[];for(let i=11;i>=0;i--){let e=new Date();e.setDate(e.getDate()-i*7);let s=new Date(e);s.setDate(s.getDate()-7);ws.push(D.workouts.filter(w=>{let d=new Date(w.date);return d>=s&&d<e}).reduce((a,w)=>a+(+w.km||0),0))}let mx=Math.max(1,...ws);chart.innerHTML=ws.map(v=>`<i class="bar" style="height:${Math.max(4,v/mx*100)}%"></i>`).join("");n.textContent=D.workouts.length;let lr=D.workouts.filter(w=>+w.km>=20);long.textContent=(lr.length?Math.max(...lr.map(w=>+w.km)):0)+" km";let rp=D.workouts.map(w=>+w.rpe||4),ch=D.workouts.filter(w=>+w.carbs>0).map(w=>+w.carbs);rpeAvg.textContent=rp.length?(rp.reduce((a,b)=>a+b,0)/rp.length).toFixed(1):"—";chAvg.textContent=ch.length?(ch.reduce((a,b)=>a+b,0)/ch.length).toFixed(0)+" g/h":"—";analysisText.textContent=D.workouts.length<10?"Registra más sesiones para tendencias fiables.":"Datos suficientes para empezar a observar tendencias.";dur.textContent=lr.length?`${lr.length} tiradas ≥20 km registradas. Máximo individual previsto: 32 km.`:"Todavía no hay tiradas ≥20 km.";gpxList.innerHTML=D.gpx.length?D.gpx.map((x,i)=>`<div class="row"><b>${esc(x.name)}</b><button class="btn" onclick="downloadGPX(${i})">Descargar</button></div>`).join(""):'<div class="muted">Sin GPX importados.</div>'}function saveWorkout(e){e.preventDefault();D.workouts.push({date:date.value+"T12:00:00",km:+km.value,min:+minutes.value,elev:+elev.value||0,avg:+avg.value||0,max:+max.value||0,rpe:+rpe.value||4,fatigue:+fatigue.value||3,pain:+painIn.value||0,cramps:+cramps.value||0,carbs:+carbs.value||0,water:+water.value||0,type:kind.value});save();render();e.target.reset();date.value=new Date().toISOString().slice(0,10);go("dashboard")}gpxFile.onchange=function(){let f=this.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{D.gpx.push({name:f.name,content:r.result});save();render();gpxMsg.textContent="Importado: "+f.name};r.readAsText(f)};function downloadGPX(i){let x=D.gpx[i],u=URL.createObjectURL(new Blob([x.content],{type:"application/gpx+xml"})),a=document.createElement("a");a.href=u;a.download=x.name;a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}function backup(){let u=URL.createObjectURL(new Blob([JSON.stringify(D,null,2)],{type:"application/json"})),a=document.createElement("a");a.href=u;a.download="ultra_coach_51k_backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}function esc(x){return String(x).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}let ti=0,ts=0;function tr(){timer.textContent=String(Math.floor(ts/60)).padStart(2,"0")+":"+String(ts%60).padStart(2,"0")}function timerStart(){if(ti)return;ti=setInterval(()=>{ts++;tr()},1000)}function timerStop(){clearInterval(ti);ti=0}function timerReset(){timerStop();ts=0;tr()}function checkHR(){let h=+hrCheck.value||0;hrOut.textContent=`${h} ppm → ${h<=143?"Z1 recuperación":h<=160?"Z2 aeróbico":h<=177?"Z3 moderado":h<=193?"Z4 umbral":"Z5 alta intensidad"}`}function waterRate(){let w=+waterQuick.value||0,h=+hoursQuick.value||0;waterOut.textContent=h>0?(w/h).toFixed(2)+" L/h":"Introduce horas."}function chTotal(){let r=+chRate.value||0,h=+chHours.value||0;chOut.textContent=h>0?(r*h).toFixed(0)+" g CH":"Introduce horas."}function calcPace(){let k=+paceKm.value||0,m=+paceMin.value||0,p=m/k,mi=Math.floor(p),s=Math.round((p-mi)*60);if(!k){paceOut.textContent="Introduce km.";return}if(s===60){mi++;s=0}paceOut.textContent=`${mi}:${String(s).padStart(2,"0")}/km`}function checkIn(){let s=+sleep.value||0,l=+legs.value||0,x=(s+l)/2;checkOut.textContent=x>=8?"🟢 Buen día.":x>=6?"🟠 Moderado.":"🔴 Prioriza recuperación."}function ask(e){e.preventDefault();let q=question.value.trim();if(!q)return;chat.innerHTML+=`<div class="bubble me">${esc(q)}</div>`;let l=q.toLowerCase(),a="Prioriza continuidad, base aeróbica y durabilidad.";if(/ppm|pulso|zona/.test(l))a="Rodajes: 140–150 ppm como referencia práctica. En subida manda el esfuerzo.";else if(/km|volumen/.test(l))a="Ahora mismo: 60–75 km/semana orientativos; progresar solo si recuperas bien.";else if(/larga|tirada|32/.test(l))a="Máximo 32 km. Usa 24–28 km con más frecuencia y 30–32 km de forma específica.";else if(/calambre|nutri|carbo/.test(l))a="Practica 50–60 g/h y desarrolla tolerancia hacia 60–80 g/h.";else if(/hoy|mañana|entreno/.test(l))a="Si estás recuperado y sin dolor: 12 km llanos, 140–150 ppm, RPE 3–4.";setTimeout(()=>chat.innerHTML+=`<div class="bubble ai"><b>Coach:</b><br>${a}</div>`,100);question.value=""}date.value=new Date().toISOString().slice(0,10);render();if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
-</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
+  <title>Ultra-51k Pro Coach</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #111111;
+      --red: #e11d48;
+      --red-hover: #be123c;
+      --text: #ffffff;
+      --gray: #9ca3af;
+      --dark-gray: #1f2937;
+      --green: #22c55e;
+      --yellow: #eab308;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding-top: 65px;
+      padding-bottom: 20px;
+    }
+
+    /* NAVBAR & MENU */
+    .navbar {
+      position: fixed; top: 0; width: 100%; height: 60px;
+      background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(5px);
+      border-bottom: 2px solid var(--red);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 15px; box-sizing: border-box; z-index: 1000;
+    }
+
+    .navbar h1 { color: var(--red); font-size: 1.2rem; margin: 0; font-weight: 900; letter-spacing: 1px; }
+    .menu-btn { background: none; border: none; color: var(--text); font-size: 1.8rem; cursor: pointer; }
+
+    .menu {
+      display: none; position: fixed; top: 60px; left: 0; width: 100%;
+      background: #0a0a0a; flex-direction: column; z-index: 999;
+      border-bottom: 1px solid var(--dark-gray);
+    }
+    .menu.active { display: flex; }
+    .menu button {
+      background: none; border: none; border-bottom: 1px solid #1a1a1a;
+      color: var(--text); padding: 15px 20px; text-align: left; font-size: 1rem; font-weight: bold;
+    }
+    .menu button:active { background: var(--red); }
+
+    /* LAYOUT & CARDS */
+    .content { padding: 10px; max-width: 600px; margin: 0 auto; }
+    .tab { display: none; animation: fadeIn 0.3s; }
+    .tab.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .card {
+      background: var(--card); border: 1px solid var(--dark-gray); border-radius: 12px;
+      padding: 15px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    
+    h2 { color: var(--red); margin: 0 0 10px 0; font-size: 1.1rem; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 5px; }
+    h3 { font-size: 0.95rem; margin: 10px 0 5px 0; color: #ddd; }
+    p { margin: 0 0 10px 0; font-size: 0.9rem; line-height: 1.4; color: #ccc; }
+
+    /* UTILS */
+    .btn {
+      background: var(--red); color: #fff; border: none; padding: 12px; width: 100%;
+      border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 5px;
+    }
+    .btn:active { background: var(--red-hover); }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+    
+    .box { background: #000; border: 1px solid #333; padding: 10px; border-radius: 8px; text-align: center; }
+    .box-val { font-size: 1.2rem; font-weight: 900; color: var(--red); }
+    .box-lbl { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; margin-top: 3px; }
+
+    /* PROGRESS BARS */
+    .bar-bg { background: #222; border-radius: 10px; height: 12px; width: 100%; margin-top: 5px; overflow: hidden; }
+    .bar-fill { background: var(--red); height: 100%; border-radius: 10px; }
+    .bar-fill.green { background: var(--green); }
+    .bar-fill.yellow { background: var(--yellow); }
+
+    /* CHAT IA */
+    .chat-box { background: #000; border-radius: 8px; padding: 10px; height: 150px; overflow-y: auto; border: 1px solid #333; margin-bottom: 10px; }
+    .msg { margin-bottom: 8px; font-size: 0.85rem; padding: 8px; border-radius: 8px; width: 85%; }
+    .msg.bot { background: #1a1a1a; color: var(--green); border-left: 2px solid var(--green); }
+    .msg.user { background: var(--dark-gray); color: #fff; margin-left: auto; text-align: right; }
+    .chat-input { display: flex; gap: 5px; }
+    .chat-input input { flex: 1; background: #000; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 8px; }
+    
+    /* SPECIAL TEXT */
+    .highlight { color: var(--red); font-weight: bold; }
+    .tag { display: inline-block; background: #222; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; margin: 2px; }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h1>ULTRA-51K PRO</h1>
+    <button class="menu-btn" id="btnMenu">☰</button>
+  </div>
+
+  <div class="menu" id="dropdownMenu">
+    <button onclick="openTab('tab-dash')">🟢 Readiness & WOD</button>
+    <button onclick="openTab('tab-lab')">🧬 Lab de Rendimiento</button>
+    <button onclick="openTab('tab-sim')">⛰️ Simulador GPX</button>
+    <button onclick="openTab('tab-fuel')">🥤 Nutrición & Gear</button>
+    <button onclick="openTab('tab-coach')">🤖 Coach IA & Perfil</button>
+  </div>
+
+  <div class="content">
+    
+    <!-- DASHBOARD -->
+    <div id="tab-dash" class="tab active">
+      <div class="card" style="border-left: 4px solid var(--green);">
+        <h2>Estado de Hoy (Readiness)</h2>
+        <div style="font-size: 2.2rem; font-weight: 900; color: var(--green);">87<span style="font-size:1rem; color:var(--gray)">/100</span></div>
+        <p style="margin-top: 5px;"><strong>Buen día para cargar.</strong> Tu carga de los últimos 7 días está controlada. El balance carga/fatiga es óptimo.</p>
+        <div class="grid-3">
+          <div class="box"><div class="box-val">Normal</div><div class="box-lbl">Strain Semanal</div></div>
+          <div class="box"><div class="box-val">Baja</div><div class="box-lbl">Monotonía</div></div>
+          <div class="box"><div class="box-val">12h</div><div class="box-lbl">Recuperación</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>WOD: Entrenamiento</h2>
+        <p><strong style="font-size:1.1rem; color:#fff;">Tirada Z2 + Desnivel</strong></p>
+        <p>14 km en terreno rompepiernas. Mantén el pulso bajo 150 ppm.</p>
+        <button class="btn">Registrar como completado</button>
+      </div>
+
+      <div class="card">
+        <h2>Fatigue Monitor (Post-Entreno)</h2>
+        <p>Registra tus sensaciones para alimentar la IA.</p>
+        <div style="display:flex; justify-content:space-between; margin-top:10px;">
+          <span style="font-size:0.8rem;">Piernas:</span>
+          <input type="range" min="1" max="10" value="4" style="width:70%; accent-color:var(--red);">
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:10px;">
+          <span style="font-size:0.8rem;">Fatiga General:</span>
+          <input type="range" min="1" max="10" value="3" style="width:70%; accent-color:var(--red);">
+        </div>
+        <div style="background:#1a1a1a; padding:10px; border-radius:6px; margin-top:10px; font-size:0.8rem; border-left: 2px solid var(--yellow);">
+          ⚠️ <strong>Patrón detectado:</strong> Los días posteriores a tiradas >28 km tu fatiga muscular aumenta un 35%.
+        </div>
+      </div>
+    </div>
+
+    <!-- PERFORMANCE LAB -->
+    <div id="tab-lab" class="tab">
+      <div class="card">
+        <h2>Motor de Durabilidad</h2>
+        <div style="font-size: 2rem; font-weight: 900; color: var(--yellow);">72<span style="font-size:1rem; color:var(--gray)">/100</span></div>
+        <div class="bar-bg"><div class="bar-fill yellow" style="width: 72%;"></div></div>
+        <p style="margin-top:10px;">Mantienes bien el ritmo hasta el km 28, pero falta demostrar estabilidad estructural y de pulso a partir del km 30.</p>
+      </div>
+
+      <div class="card">
+        <h2>Cardiac Drift (Deriva)</h2>
+        <p>Evolución de pulsaciones manteniendo ritmo estable (5:30/km):</p>
+        <div style="font-family: monospace; font-size:0.85rem; background:#000; padding:10px; border-radius:6px;">
+          KM 00 &nbsp;|| <span style="color:var(--green)">145 ppm</span><br>
+          KM 10 &nbsp;|||| <span style="color:var(--green)">148 ppm</span><br>
+          KM 20 &nbsp;|||||| <span style="color:var(--yellow)">153 ppm</span><br>
+          KM 30 &nbsp;||||||||| <span style="color:var(--red)">160 ppm</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Mountain Intelligence</h2>
+        <div class="grid-2">
+          <div class="box"><div class="box-val" style="color:#fff;">8:15<span style="font-size:0.7rem">/km</span></div><div class="box-lbl">⛰️ Subida (164 ppm)</div></div>
+          <div class="box"><div class="box-val" style="color:#fff;">5:18<span style="font-size:0.7rem">/km</span></div><div class="box-lbl">🏃 Llano (148 ppm)</div></div>
+          <div class="box"><div class="box-val" style="color:#fff;">4:52<span style="font-size:0.7rem">/km</span></div><div class="box-lbl">📉 Bajada (151 ppm)</div></div>
+          <div class="box"><div class="box-val" style="color:var(--green);">+12%</div><div class="box-lbl">Eficiencia Bajando</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>¿Qué pasaría si...? (Simulador)</h2>
+        <p>Impacto estimado en tu cuerpo:</p>
+        <button class="btn" style="background:#222; font-size:0.85rem; margin-bottom:5px;">👉 Hacer 75 km/semana durante 8 semanas</button>
+        <button class="btn" style="background:#222; font-size:0.85rem;">👉 30 km el Sábado + 20 km el Domingo</button>
+      </div>
+    </div>
+
+    <!-- SIMULADOR GPX -->
+    <div id="tab-sim" class="tab">
+      <div class="card" style="text-align: center; border-color: var(--red);">
+        <h2 style="border:none;">🏆 ROAD TO 51K</h2>
+        <div style="font-size: 2.5rem; font-weight: 900; color: #fff;">206 <span style="font-size: 1rem; color:var(--gray)">DÍAS</span></div>
+        <p style="color: var(--red); font-weight: bold; margin-bottom:0;">27 MARZO 2027</p>
+        <div style="margin-top:10px; font-size:0.7rem; color:var(--gray);">
+          <span class="tag" style="background:var(--red); color:#fff;">BASE</span> > 
+          <span class="tag">CONSTRUCCIÓN</span> > 
+          <span class="tag">ESPECÍFICO</span> > 
+          <span class="tag">TAPER</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Race Simulator: Los 102 de la Comarca</h2>
+        <p>Sube tu track GPX para predecir tiempos y puntos clave de la ruta.</p>
+        <button class="btn">Cargar GPX</button>
+        
+        <h3 style="margin-top:15px; color:var(--red);">Predicción de Tiempo (51K)</h3>
+        <p>Basado en tu volumen y entrenamientos actuales:</p>
+        <div class="grid-2">
+          <div class="box"><div class="box-val" style="color:#fff;">5:08:00</div><div class="box-lbl">Tiempo Actual</div></div>
+          <div class="box"><div class="box-val" style="color:var(--green);">4:59:59</div><div class="box-lbl">Tiempo Objetivo</div></div>
+        </div>
+        <div class="bar-bg"><div class="bar-fill" style="width: 82%;"></div></div>
+        <p style="text-align:right; font-size:0.75rem; margin-top:5px;">82% de probabilidad de éxito</p>
+      </div>
+    </div>
+
+    <!-- NUTRICIÓN & GEAR -->
+    <div id="tab-fuel" class="tab">
+      <div class="card">
+        <h2>Race Fuel Lab</h2>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+          <span>Tiempo Objetivo:</span> <strong>5h 00m</strong>
+        </div>
+        <div class="grid-2">
+          <div class="box"><div class="box-val">70g</div><div class="box-lbl">CH / hora objetivo</div></div>
+          <div class="box"><div class="box-val">500ml</div><div class="box-lbl">Líquido / hora</div></div>
+        </div>
+        <div style="background:#1a1a1a; padding:10px; border-radius:6px; margin-top:10px;">
+          <h3 style="margin-top:0; color:var(--green);">Totales para la Carrera</h3>
+          <ul style="margin:0; padding-left:20px; font-size:0.85rem; color:#ccc;">
+            <li>350g de Carbohidratos totales</li>
+            <li>2.5 Litros de líquido (5 soft flasks)</li>
+            <li>Beber cada 15 min, gel cada 45 min.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Metrónomo de Cadencia</h2>
+        <div style="font-size: 2.5rem; text-align: center; font-weight: 900; color: var(--red);">170 <span style="font-size:0.9rem; color:#fff;">PPM</span></div>
+        <button class="btn">Activar Sonido / Vibración</button>
+      </div>
+      
+      <div class="card">
+        <h2>Gear Tracker (Zapatillas)</h2>
+        <div class="bar-bg"><div class="bar-fill" style="width: 68%;"></div></div>
+        <p style="margin-top:5px; font-size:0.8rem;">Hoka Speedgoat 5 — 340 km recorridos (68%)</p>
+      </div>
+    </div>
+
+    <!-- COACH IA & PERFIL -->
+    <div id="tab-coach" class="tab">
+      <div class="card">
+        <h2>Athlete Card (Daniel)</h2>
+        <div class="grid-3" style="margin-bottom:10px;">
+          <div class="box" style="padding:5px;"><div class="box-val" style="font-size:1rem; color:#fff;">16:35</div><div class="box-lbl">5K</div></div>
+          <div class="box" style="padding:5px;"><div class="box-val" style="font-size:1rem; color:#fff;">35:59</div><div class="box-lbl">10K</div></div>
+          <div class="box" style="padding:5px;"><div class="box-val" style="font-size:1rem; color:#fff;">63</div><div class="box-lbl">VO2Max</div></div>
+        </div>
+        <p style="font-size:0.8rem; margin-bottom:5px;">Métricas adaptativas:</p>
+        <span class="tag">Aeróbico: 91</span> <span class="tag">Velocidad: 94</span> 
+        <span class="tag">Montaña: 78</span> <span class="tag">Durabilidad: 68</span>
+      </div>
+
+      <div class="card">
+        <h2>Laboratorio del Atleta</h2>
+        <ul style="margin:0; padding-left:20px; font-size:0.85rem; color:#ccc; line-height:1.6;">
+          <li>❤️ Tu FC suele mantenerse estable hasta ~90 min.</li>
+          <li>⛰️ En desnivel tu FC aumenta 16 ppm respecto a llano.</li>
+          <li>🦵 Limitante actual: durabilidad muscular post 30km.</li>
+          <li>📈 Tu volumen aumentó 12% en las últimas 4 semanas.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Coach IA 51K</h2>
+        <div class="chat-box">
+          <div class="msg bot">¡Hola Daniel! Tu volumen está perfecto esta semana. ¿Qué analizamos hoy?</div>
+          <div class="msg user">¿Por qué se me disparó el pulso ayer?</div>
+          <div class="msg bot">Cruzando datos: ayer hiciste desnivel técnico a 24°C y tu deriva cardíaca subió un 8% tras el km 12. Faltó hidratación.</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" placeholder="¿Estoy preparado para 30km?">
+          <button class="btn" style="width:auto; margin-top:0; padding:10px 15px;">Enviar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // 1. FORZAR ACTUALIZACIÓN (MATA CACHÉ ANTIGUA)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) { registration.unregister(); }
+      });
+    }
+
+    // 2. LÓGICA DEL MENÚ HAMBURGUESA
+    const btnMenu = document.getElementById('btnMenu');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    
+    btnMenu.addEventListener('click', () => { dropdownMenu.classList.toggle('active'); });
+
+    function openTab(tabId) {
+      document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      dropdownMenu.classList.remove('active');
+      window.scrollTo(0,0);
+    }
+  </script>
+</body>
+</html>
